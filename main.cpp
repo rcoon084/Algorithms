@@ -55,7 +55,7 @@ double calculateMedian(vector<double> &times)
 int main()
 {
     double accumulatedTime = 0.0;
-    size_t n = 3; // Initial size of the array
+    size_t n = 1; // Initial size of the array
     bool timeExceeded = false;
     ofstream output("insertion_sort_results.csv");
 
@@ -79,7 +79,12 @@ int main()
 
         // Calculate the median time for this n
         double medianTime = calculateMedian(times);
-        output << n << "," << medianTime << "\n";
+        if (medianTime != 0){
+            output << n << "," << medianTime << "\n";
+        }else{
+            output << n << "," << medianTime + 0.000000001 << "\n";
+        }
+
         cout << "n = " << n << ", Median Time: " << medianTime << " ms\n";
 
         // Total time of excecution
